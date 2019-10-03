@@ -6,13 +6,13 @@
     </div>
     <div class="container">
         <h1>Top Skills</h1>
-        <form method="POST">{% csrf_token %}
+        <form method="GET">{% csrf_token %}
             <div class="form-group">
                 <label for="inputStartDate">Start date</label>
-                <input type = 'date' value={{ datetime.date.today }} name='start_date' id="inputStartDate">
+                <div style="display:inline;"> {{ date_form.start }} </div>
                 <label for="inputEndDate">End date</label>
-                <input type = 'date' value="<?php echo date('Y-m-d'); ?>" name='end_date' >
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div style="display:inline;"> {{ date_form.end }} </div>
+                <button type="submit" class="btn btn-primary">Update</button>
             </div>
         </form>
         <table class="table">
