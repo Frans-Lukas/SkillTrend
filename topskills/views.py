@@ -18,10 +18,6 @@ def index(request):
         start_date = form.cleaned_data['start']
         end_date = form.cleaned_data['end']
 
-
-    form.fields['start'].initial = start_date
-    form.fields['end'].initial = end_date
-
     day_before_start = start_date - timedelta(days=1)
     day_after_end = end_date + timedelta(days=1)
     keywordsCount = Job.objects.raw('SELECT keyword, keyword AS id, count(keyword)'
