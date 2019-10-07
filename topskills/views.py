@@ -27,7 +27,9 @@ def index(request):
                                     ' WHERE date_found'
                                     ' BETWEEN \'' + day_before_start.strftime("%Y-%m-%d") + '\''
                                     ' AND \'' + day_after_end.strftime("%Y-%m-%d") + '\''
-                                    'GROUP BY keyword;')
+                                    ' GROUP BY keyword'
+                                    ' ORDER BY count(keyword) DESC '
+                                    ' LIMIT 10;')
     context = {
         'keywordsCount': keywordsCount,
         'date_form': form,
