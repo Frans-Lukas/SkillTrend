@@ -6,7 +6,7 @@
     </div>
     <div class="container">
         <h1>Top Skills</h1>
-        <form method="GET">{% csrf_token %}
+        <form action="/topskills/" method="GET">{% csrf_token %}
             <div class="form-group">
                 <label for="inputStartDate">Start date</label>
                 <div style="display:inline;"> {{ date_form.start }} </div>
@@ -26,7 +26,7 @@
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
                         <td>{{ keyword.keyword }}</td>
-                        <td>{{ keyword.total }}</td>
+                        <td>{{ keyword.count }}</td>
                     </tr>
 
                 {% endfor %}
