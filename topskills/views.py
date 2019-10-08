@@ -13,14 +13,14 @@ def index(request):
     start_date = datetime.today()
     end_date = datetime.today()
 
-    form = DateForm(request.GET)
+    form = DateForm(request.GET, initial={'start' : start_date, 'end' : end_date})
     if form.is_valid():
         start_date = form.cleaned_data['start']
         end_date = form.cleaned_data['end']
 
     day_before_start = start_date - timedelta(days=1)
     day_after_end = end_date + timedelta(days=1)
-    keywordsCount = Job.objects.raw('SELECT keyword, keyword AS id, count(keyword)'
+    keywordsCount = Job.objects.raw(' SELECT keyword, keyword AS id, count(keyword)'
                                     ' FROM topskills_job'
                                     ' INNER JOIN topskills_keyword'
                                     ' ON topskills_job .id = topskills_keyword.job_hash_id'
@@ -30,10 +30,12 @@ def index(request):
                                     ' GROUP BY keyword'
                                     ' ORDER BY count(keyword) DESC '
                                     ' LIMIT 10;')
+    form = DateForm(initial={'start' : start_date, 'end' : end_date})
     context = {
         'keywordsCount': keywordsCount,
         'date_form': form,
         'start_date': start_date,
         'end_date': end_date,
     }
+
     return render(request, 'topskills/index.html', context)
