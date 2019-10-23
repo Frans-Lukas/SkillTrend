@@ -30,7 +30,7 @@
                 {% for keyword in keywordsCount%}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="/topskills/jobs-with-word/{{ keyword.keyword }}">{{ keyword.keyword }}</a></td>
+                        <td><a href="/jobs-with-word/{{ keyword.keyword|urlencode }}">{{ keyword.keyword }}</a></td>
                         <td>{{ keyword.count }}</td>
                     </tr>
                 {% endfor %}

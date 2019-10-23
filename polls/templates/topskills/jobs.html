@@ -17,7 +17,7 @@
                 {% for job in jobs%}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href={{ job.job_url }}>{{ job.job_description }}</a></td>
+                        <td><a href={{ job.job_url }}>{{ job.job_description}}</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
