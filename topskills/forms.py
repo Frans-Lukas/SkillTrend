@@ -8,3 +8,4 @@ class DateInput(forms.DateInput):
 class DateForm(forms.Form):
     start = forms.DateField(widget=DateInput, initial=datetime.date.today)
     end = forms.DateField(widget=DateInput, initial=datetime.date.today)
+    num_per_page = forms.IntegerField(initial=10)

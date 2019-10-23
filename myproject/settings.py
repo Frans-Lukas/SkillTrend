@@ -83,9 +83,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'topskillsdb',
-        'USER': 'postgres',
+        'USER': 'frassejohan',
         'PASSWORD': DB_PASSWORD,
-        'HOST': 'localhost',
+        'HOST': '35.228.81.65',
         'PORT': '5432',
     }
 }

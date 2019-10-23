@@ -5,14 +5,15 @@
 
     </div>
     <div class="container">
-        <h1>Top 10 Skills</h1>
+        <h1>Top {{date_form.num_per_page.initial}} Skills</h1>
         <form action="/topskills/" method="GET">{% csrf_token %}
             <div class="form-group">
                 <label for="inputStartDate">Start date</label>
                 <div style="display:inline;"> {{ date_form.start }} </div>
                 <label for="inputEndDate">End date</label>
                 <div style="display:inline;"> {{ date_form.end }} </div>
-                <button type="submit" class="btn btn-primary">Update</button>
+                <div>Num per page {{ date_form.num_per_page }} <button type="submit" class="btn btn-primary">Update</button></div>
+
             </div>
         </form>
         <table class="table">
