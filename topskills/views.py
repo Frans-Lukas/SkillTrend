@@ -1,7 +1,9 @@
 from datetime import timedelta, datetime
+from random import sample
 
 from django.db.models import Count
 from django.db.models.functions import Coalesce
+from django.http import HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -41,3 +43,16 @@ def index(request):
     }
 
     return render(request, 'topskills/index.html', context)
+
+def jobs(request, word):
+    job_hashes_with_keyword = Keyword.objects.filter(keyword=word).values('job_hash')
+    jobs_with_keyword = Job.objects.filter(job_hash__in=job_hashes_with_keyword)
+    context = {
+        'keyword': word,
+        'jobs' : jobs_with_keyword,
+    }
+    return render(request, 'topskills/jobs.html', context)
+
+
+def scramble_dict(jobs_with_keyword):
+    return dict(zip(jobs_with_keyword, sample(list(jobs_with_keyword.values()), len(jobs_with_keyword))))

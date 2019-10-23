@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
+    <head>
+        <meta charset="UTF-8">
+        <title>Job skills</title>
+    </head>
     <div>
 
     </div>
@@ -26,10 +30,9 @@
                 {% for keyword in keywordsCount%}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ keyword.keyword }}</td>
+                        <td><a href="/topskills/jobs-with-word/{{ keyword.keyword }}">{{ keyword.keyword }}</a></td>
                         <td>{{ keyword.count }}</td>
                     </tr>
-
                 {% endfor %}
             </tbody>
         </table>

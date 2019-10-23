@@ -1,10 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Jobs with keyword</title>
 </head>
 <body>
-
+    <div class="container">
+        <h1>Jobs using keyword '{{keyword}}'</h1>
+        <table class="table">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">Job</th>
+            </thead>
+            <tbody>
+                {% for job in jobs%}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href={{ job.job_url }}>{{ job.job_description }}</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
-</html>
+{% endblock %}
