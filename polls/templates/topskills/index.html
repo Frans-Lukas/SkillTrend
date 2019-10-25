@@ -10,7 +10,7 @@
     </div>
     <div class="container">
         <h1>Top {{date_form.num_per_page.initial}} Skills</h1>
-        <form action="/topskills/" method="GET">{% csrf_token %}
+        <form action="" method="GET">{% csrf_token %}
             <div class="form-group">
                 <label for="inputStartDate">Start date</label>
                 <div style="display:inline;"> {{ date_form.start }} </div>
